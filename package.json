@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/leszczynski-it/gramy#readme",
   "devDependencies": {
+    "config": "^1.19.0",
     "express": "^4.13.4"
   }
 }
