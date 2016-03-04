@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy:production": "pm2 deploy production --force",
-    "deploy:stage": "pm2 deploy stage --force"
+    "deploy:production": "pm2 deploy production",
+    "deploy:stage": "pm2 deploy stage"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,13 @@
   "apps" : [
     {
       "name"      : "GRAMY_SERVER",
-      "script"    : "server.js"
+      "script"    : "server.js",
+      "env_production" : {
+        "NODE_ENV": "production"
+      },
+      "env_stage" : {
+        "NODE_ENV": "stage"
+      }
     }
   ]
 }
