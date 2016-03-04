@@ -1,0 +1,37 @@
+{
+  "apps" : [
+    {
+      "name"      : "API",
+      "script"    : "server.js"
+    }
+  ],
+
+  /**
+   * Deployment section
+   * http://pm2.keymetrics.io/docs/usage/deployment/
+   */
+  "deploy" : {
+    "stage" : {
+      "user" : "node-www",
+      "host" : "leszczynski.it",
+      "ref"  : "origin/master",
+      "repo" : "https://github.com/leszczynski-it/gramy.git",
+      "path" : "$HOME/production",
+      "post-deploy" : "npm install ; pm2 startOrRestart ecosystem.json --env production",
+       "env"  : {
+        "NODE_ENV": "production"
+      }
+    },
+    "dev" : {
+      "user" : "node",
+      "host" : "212.83.163.1",
+      "ref"  : "origin/master",
+      "repo" : "https://github.com/leszczynski-it/gramy.git",
+      "path" : "/var/www/development",
+      "post-deploy" : "npm install ; pm2 startOrRestart ecosystem.json --env dev",
+      "env"  : {
+        "NODE_ENV": "dev"
+      }
+    }
+  }
+}
